@@ -119,10 +119,10 @@ func TestComplexStruct(t *testing.T) {
 }
 
 func TestComplexStructWithOverwrite(t *testing.T) {
-	a := complexTest{simpleTest{1}, 1, "do-not-overwrite-with-empty-value"}
+	a := complexTest{simpleTest{1}, 1, "overwrite-with-empty-value"}
 	b := complexTest{simpleTest{42}, 2, ""}
 
-	expect := complexTest{simpleTest{42}, 1, "do-not-overwrite-with-empty-value"}
+	expect := complexTest{simpleTest{42}, 1, ""}
 	if err := MergeWithOverwrite(&a, b); err != nil {
 		t.FailNow()
 	}
